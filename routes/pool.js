@@ -9,6 +9,13 @@ var pool = mysql.createConnection({
   database: process.env.DB_NAME,
   multipleStatements: true,
 });
-console.log("DB_HOST =", process.env.DB_HOST);
-console.log("DB_PORT =", process.env.DB_PORT);
+
+pool.connect((err) => {
+  if (err) {
+    console.log("DB CONNECTION ERROR:", err);
+  } else {
+    console.log("DATABASE CONNECTED SUCCESSFULLY");
+  }
+});
+
 module.exports = pool;
